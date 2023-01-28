@@ -9,11 +9,10 @@ import { openModal,addPhoneNumber } from '@/features/modalSlice';
 import {BsChevronRight} from "react-icons/bs";
 
 export default function Home() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryData, setCountryData] = useState(null);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +34,9 @@ export default function Home() {
   const submitHandler = (e) => {
     e.preventDefault();
     if(phoneNumber !== null) {
-      dispatch(addPhoneNumber(phoneNumber));
+      dispatch(addPhoneNumber({
+        calling_code: countryData.country_calling_code, 
+        phoneNumber}));
       setIsOpen(false);
   }
   }

@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
      phoneNumber: null,
+     calling_code: null
 }
 
 const modalSlice = createSlice({
@@ -9,7 +10,8 @@ const modalSlice = createSlice({
      initialState,
      reducers: {
           addPhoneNumber: (state, action) => {
-               state.phoneNumber = action.payload;
+               state.phoneNumber = action.payload.phoneNumber;
+               state.calling_code = action.payload.calling_code;
           }
      }
 })
